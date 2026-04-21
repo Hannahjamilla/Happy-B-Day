@@ -3,6 +3,7 @@
 .font-cinzel     { font-family: 'Cinzel', serif; }
 .font-cormorant  { font-family: 'Cormorant Garamond', serif; }
 .font-montserrat { font-family: 'Montserrat', sans-serif; }
+.font-poppins    { font-family: 'Poppins', sans-serif; }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
@@ -96,6 +97,37 @@
   0%, 100% { box-shadow: 0 0 0 0   rgba(186,130,180,0.4); }
   50%       { box-shadow: 0 0 0 10px rgba(186,130,180,0); }
 }
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+@keyframes floatScale {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+@keyframes swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
+}
+@keyframes balloonUp {
+  0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
+  100% { transform: translateY(0) scale(1.2); opacity: 0.4; }
+}
+
+.animate-balloon-up { animation: balloonUp 2s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
 .animate-fade-in-up  { animation: fadeInUp  1s   cubic-bezier(0.22,1,0.36,1) both; }
 .animate-fade-in     { animation: fadeIn    0.9s ease-out both; }
@@ -126,8 +158,23 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  display: inline-block;
   animation: shimmerPastel 6s linear infinite;
+}
+
+.animate-float-scale { animation: floatScale 6s ease-in-out infinite; }
+.animate-swing      { animation: swing      4s ease-in-out infinite; }
+.animate-aurora     { animation: aurora     15s ease infinite; background-size: 400% 400%; }
+.animate-shine      { position: relative; overflow: hidden; }
+.animate-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  animation: shine 4s infinite;
 }
 
 .delay-100  { animation-delay: 0.1s;  animation-fill-mode: both; }
